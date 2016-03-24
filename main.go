@@ -18,10 +18,10 @@ func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	defer f.Close()
 
 	w.Header().Set("Content-Type", "image/jpeg")
 	io.Copy(w, f)
+	f.Close()
 }
 
 func main() {
